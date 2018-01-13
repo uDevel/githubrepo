@@ -1,4 +1,4 @@
-package com.udevel.data;
+package com.udevel.data.github;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

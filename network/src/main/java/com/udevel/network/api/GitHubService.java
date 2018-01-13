@@ -1,6 +1,6 @@
 package com.udevel.network.api;
 
-import com.udevel.data.Repo;
+import com.udevel.data.github.Repo;
 
 import java.util.List;
 

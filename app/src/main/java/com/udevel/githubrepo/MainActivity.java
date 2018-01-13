@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.udevel.data.Repo;
-import com.udevel.network.api.Network;
+import com.udevel.data.github.Repo;
+import com.udevel.network.NetworkService;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Call<List<Repo>> call = Network.getGitHubService().getRepos();
+        Call<List<Repo>> call = NetworkService.getGitHubService().getRepos();
         call.enqueue(new Callback<List<Repo>>() {
             @Override
             public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {

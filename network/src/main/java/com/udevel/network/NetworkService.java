@@ -1,15 +1,13 @@
-package com.udevel.network.api;
+package com.udevel.network;
 
 import android.support.annotation.NonNull;
+
+import com.udevel.network.api.GitHubService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by benny_zw on 1/12/2018.
- */
-
-public class Network {
+public class NetworkService {
 
     @NonNull
     public static GitHubService getGitHubService() {
