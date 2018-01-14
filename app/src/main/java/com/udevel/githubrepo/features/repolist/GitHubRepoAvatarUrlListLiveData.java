@@ -30,18 +30,6 @@ public class GitHubRepoAvatarUrlListLiveData extends LiveData<List<String>> impl
     }
 
     @Override
-    protected void onActive() {
-      /*  if (lastFetchedId == 0) {
-            fetchNextData();
-        }*/
-    }
-
-    @Override
-    protected void onInactive() {
-        /*cancelCurrentFetch();*/
-    }
-
-    @Override
     public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
         serviceCall = null;
 
