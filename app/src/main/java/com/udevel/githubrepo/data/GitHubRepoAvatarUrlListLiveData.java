@@ -1,4 +1,4 @@
-package com.udevel.githubrepo.features.repolist;
+package com.udevel.githubrepo.data;
 
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;

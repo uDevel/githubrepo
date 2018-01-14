@@ -13,7 +13,7 @@ import com.udevel.network.NetworkService;
 public class MainActivityViewModelFactory implements ViewModelProvider.Factory {
     private final NetworkService networkService;
 
-    public MainActivityViewModelFactory(NetworkService networkService) {
+    MainActivityViewModelFactory(NetworkService networkService) {
         this.networkService = networkService;
     }
 
