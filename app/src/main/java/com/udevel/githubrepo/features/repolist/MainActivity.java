@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.bumptech.glide.Glide;
 import com.udevel.githubrepo.R;
@@ -17,6 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Observer<List<String>> {
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final int SPAN_COUNT = 3;
     private RecyclerView recyclerViewList;
     private MainActivityViewModel viewModel;
 
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements Observer<List<Str
 
         ImageListAdapter adapter = (ImageListAdapter) recyclerViewList.getAdapter();
         if (adapter == null) {
+
             adapter = new ImageListAdapter(Glide.with(MainActivity.this));
             recyclerViewList.setAdapter(adapter);
         }
@@ -53,6 +56,26 @@ public class MainActivity extends AppCompatActivity implements Observer<List<Str
         setContentView(R.layout.activity_main);
 
         recyclerViewList = findViewById(R.id.recycler_view_list);
-        recyclerViewList.setLayoutManager(new GridLayoutManager(this, 5));
+        recyclerViewList.setLayoutManager(new GridLayoutManager(this, SPAN_COUNT));
+        recyclerViewList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (viewModel == null) {
+                    return;
+                }
+
+                GridLayoutManager layoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
+                if (layoutManager != null) {
+                    int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
+                    int itemCount = layoutManager.getItemCount();
+
+                    Log.d(TAG, "lastVisibleItemPosition:" + lastVisibleItemPosition + " itemCount:" + itemCount);
+
+                    if (lastVisibleItemPosition + (5 * layoutManager.getSpanCount()) >= itemCount) {
+                        viewModel.fetchMoreAvatarUrls();
+                    }
+                }
+            }
+        });
     }
 }
