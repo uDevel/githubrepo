@@ -49,16 +49,10 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.View
                 .apply(GlideUtil.glideOptions);
 
         // No animation most of the time.
-        int nextInt = random.nextInt(10);
+        int nextInt = random.nextInt(5);
         switch (nextInt) {
             case 0:
                 requestBuilder = requestBuilder.transition(GenericTransitionOptions.with(GlideUtil.animationObject));
-                break;
-            case 1:
-                requestBuilder = requestBuilder.transition(GenericTransitionOptions.with(GlideUtil.animationObjectDelayed));
-                break;
-            case 2:
-                requestBuilder = requestBuilder.transition(GenericTransitionOptions.with(GlideUtil.animationObjectDelayed2));
                 break;
             default:
                 // No animation.

@@ -51,11 +51,11 @@ public class GlideUtil {
         AnimatorSet bounceScaleSet = new AnimatorSet();
         ObjectAnimator scaleXAnim = ObjectAnimator.ofFloat(view, "scaleX", startScale, 1F);
         ObjectAnimator scaleYAnim = ObjectAnimator.ofFloat(view, "scaleY", startScale, 1F);
-        OvershootInterpolator overshootInterpolator = new OvershootInterpolator(2F);
+        OvershootInterpolator overshootInterpolator = new OvershootInterpolator(1.5F);
         bounceScaleSet.setInterpolator(overshootInterpolator);
         bounceScaleSet.playTogether(scaleXAnim, scaleYAnim);
 
-        bounceScaleSet.setDuration(500L);
+        bounceScaleSet.setDuration(700L);
         return bounceScaleSet;
     }
 }
